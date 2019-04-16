@@ -116,6 +116,7 @@ Technical Experience
 Open Source
 
 * Avid contributor on GitHub
+* StackOverflow: [9 years contributing, top 2% overall](https://stackexchange.com/leagues/1/alltime/stackoverflow/2008-07-31/237955#237955)
 
 Courses
 -------
