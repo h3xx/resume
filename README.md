@@ -35,7 +35,7 @@ Skills & Expertise
 | C#                              | (Beginner, 1 year experience)
 | SQLite                          | (Advanced, 6 years experience)
 | Perl                            | (Advanced, 6 years experience)
-| Laravel                         | (Beginner, 1 years experience)
+| Laravel                         | (Beginner, 1 year experience)
 | XML                             |
 | HTML                            | (Advanced, 6 years experience)
 | JavaScript                      | (Advanced, 6 years experience)
