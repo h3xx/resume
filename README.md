@@ -90,13 +90,13 @@ March 2009 - August 2009 *(6 months)*
 * Built a replacement database in Microsoft Access, with linked tables and a
   Visual Basic user interface
 
-*Outside Technical Consultant at Custom Exteriors of Wisconsin, Inc.*
+**Outside Technical Consultant at Custom Exteriors of Wisconsin, Inc.**
 January 2009 - March 2009 *(3 months)*
 
 * Oversaw the design and launch of a large-scale database to store financial
   and work records for thousands of customers and employees
 
-*Web Portal Contact Training Specialist at University of Wisconsin-Madison*
+**Web Portal Contact Training Specialist at University of Wisconsin-Madison**
 
 July 2008 - January 2009 *(7 months)*
 
