@@ -63,7 +63,7 @@ Experience
 
 **Software Engineer, G2Planet, Inc.**
 
-October 2013 - Present *(5 years)*
+October 2013 - Present *(6 years)*
 
 * Lead developer on EventMAX 2.0 platform
 * Lead developer on EventCENTRAL platform
