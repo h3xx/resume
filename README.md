@@ -115,7 +115,7 @@ Technical Experience
 
 Open Source
 
-* Avid contributor on GitHub
+* Avid contributor on GitHub ([@h3xx](https://github.com/h3xx))
 * StackOverflow: [9 years contributing, top 2% overall](https://stackexchange.com/leagues/1/alltime/stackoverflow/2008-07-31/237955#237955)
 
 Courses
