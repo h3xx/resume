@@ -33,7 +33,6 @@ Skills & Expertise
 | Linux                           | (Expert, 6 years experience)
 | PostgreSQL                      | (Intermediate, 5 years experience)
 | Angular 6                       | (Beginner, 1 year experience)
-| MySQL                           | (Intermediate, 5 years experience)
 | C#                              | (Beginner, 1 year experience)
 | SQLite                          | (Advanced, 6 years experience)
 | Perl                            | (Advanced, 6 years experience)
@@ -50,6 +49,7 @@ Skills & Expertise
 | C# 4.0                          | (Beginner, 1 year experience)
 | XML Schema                      | (Intermediate, 1 year experience)
 | CGI/Perl                        |
+| MySQL                           | (Intermediate, 5 years experience)
 | Audio Engineering               |
 | Unix Shell Scripting            | (Expert, 5 years experience)
 | Encryption                      |
