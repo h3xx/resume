@@ -1,11 +1,13 @@
 Dan Church
 ==========
 
+*View online: https://h3xx.github.io/resume*
+
 Computer Software Professional
 
 dchurch000@gmail.com
 
-[h3xx@github](https://github.com/h3xx)
+h3xx@github (https://github.com/h3xx)
 
 Summary
 -------
@@ -117,8 +119,8 @@ Technical Experience
 
 Open Source
 
-* Avid contributor on GitHub ([@h3xx](https://github.com/h3xx))
-* StackOverflow: [10 years contributing, top 2% overall](https://stackexchange.com/leagues/1/alltime/stackoverflow/2008-07-31/237955#237955)
+* Avid contributor on GitHub @h3xx (https://github.com/h3xx)
+* StackOverflow: 10 years contributing, top 2% overall (https://stackoverflow.com/users/237955)
 
 Courses
 -------
