@@ -36,6 +36,7 @@ Skills & Expertise
 | SQLite                          | (Advanced, 6 years experience)
 | Perl                            | (Advanced, 6 years experience)
 | Laravel                         | (Beginner, 1 year experience)
+| SAML 2.0                        | (Expert, 4 years experience)
 | XML                             |
 | HTML                            | (Advanced, 6 years experience)
 | JavaScript                      | (Advanced, 6 years experience)
@@ -67,6 +68,7 @@ October 2013 - Present *(6 years)*
 
 * Lead developer on EventMAX 2.0 platform
 * Lead developer on EventCENTRAL platform
+* Implemented internal single sign-on (SSO) system
 * Experience with Angular 6, Kubernetes, GitLab CI, Laravel 5.3, PHP
 
 **Database Development and Management Specialist at Custom Exteriors of
