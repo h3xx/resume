@@ -1,3 +1,5 @@
+<img src="images/qrcode.png" align="right">
+
 Dan Church
 ==========
 
