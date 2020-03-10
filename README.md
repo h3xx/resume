@@ -28,24 +28,30 @@ Skills & Expertise
 | Skill                           | Experience
 | ------------------------------- | ----------------------------------
 | PHP                             | (Advanced, 11 years experience)
+| Laravel                         | (Intermediate, 2 year experience)
+| Angular 6, 8                    | (Intermediate, 2 years experience)
+| JavaScript                      | (Advanced, 7 years experience)
+| TypeScript                      | (Advanced, 2 years experience)
+| Bootstrap                       | (Intermediate, 2 years experience)
+| Sass                            | (Intermediate, 2 years experience)
+| Font Awesome                    | (Intermediate, 2 years experience)
+| AJAX API                        | (Advanced, 7 years experience)
 | Git                             | (Expert, 7 years experience)
-| Shell Scripting                 | (Expert, 6 years experience)
-| Linux                           | (Expert, 6 years experience)
-| PostgreSQL                      | (Intermediate, 5 years experience)
-| Angular 6                       | (Beginner, 1 year experience)
-| C#                              | (Beginner, 1 year experience)
+| Node.js                         | (Beginner, 1 year experience)
+| Shell Scripting                 | (Expert, 10 years experience)
+| Linux                           | (Expert, 10 years experience)
+| PostgreSQL                      | (Intermediate, 7 years experience)
 | SQLite                          | (Advanced, 6 years experience)
+| Docker                          | (Beginner, 1 year experience)
 | Perl                            | (Advanced, 6 years experience)
-| Laravel                         | (Beginner, 1 year experience)
 | SAML 2.0                        | (Expert, 4 years experience)
 | XML                             |
-| HTML                            | (Advanced, 6 years experience)
-| JavaScript                      | (Advanced, 6 years experience)
-| TypeScript                      | (Intermediate, 1 year experience)
+| HTML                            | (Advanced, 7 years experience)
+| CSS 3                           | (Advanced, 7 years experience)
 | GIMP                            | (Advanced, 4 years experience)
 | Inkscape                        |
 | Network Security                |
-| jQuery                          | (Advanced, 6 year experience)
+| jQuery                          | (Advanced, 7 year experience)
 | C# 4.0                          | (Beginner, 1 year experience)
 | XML Schema                      | (Intermediate, 1 year experience)
 | CGI/Perl                        |
@@ -56,6 +62,7 @@ Skills & Expertise
 | System Administration           |
 | Linux Server                    |
 | Linux System Administration     |
+| C#                              | (Beginner, 1 year experience)
 | Java                            | (Beginner, 1 year experience)
 | C
 | C++
@@ -66,12 +73,12 @@ Experience
 
 **Software Engineer, G2Planet, Inc.**
 
-October 2013 - Present *(6 years)*
+October 2013 - Present *(7 years)*
 
 * Lead developer on EventMAX 2.0 platform
 * Lead developer on EventCENTRAL platform
-* Implemented internal single sign-on (SSO) system
-* Experience with Angular 6, Kubernetes, GitLab CI, Laravel 5.3, PHP
+* Implemented internal single sign-on (SSO) system using SAML 2.0
+* Experience with Angular 8, Kubernetes, GitLab CI, Laravel 5.3, PHP, Docker
 
 **Database Development and Management Specialist at Custom Exteriors of
 Wisconsin, Inc.**
