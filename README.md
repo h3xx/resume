@@ -1,4 +1,4 @@
-<img src="images/qrcode.png" align="right">
+<img src="images/qrcode.svg" align="right">
 
 Dan Church
 ==========

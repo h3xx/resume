@@ -1,10 +1,9 @@
 #!/usr/bin/perl -w
 use strict;
-require Image::Imlib2;
+require SVG;
 require Text::QRCode;
 
-use constant OUT => '../images/qrcode.png';
-use constant FONT_PATH => "$ENV{HOME}/.fonts/microsoft";
+use constant OUT => '../images/qrcode.svg';
 
 # how many image pixels each pixel of the qrcode is
 use constant QR_PIXEL_DIM => 6;
@@ -13,15 +12,14 @@ use constant PADDING => 8;
 use constant T_PADDING => 3;
 use constant URL => 'https://h3xx.github.io/resume';
 
-sub qrcode_image {
+sub qrcode_svg {
     my %opts = (
         size => 1,
         text => 'hello world',
         padding => 0,
         t_padding => 0,
-        # (RGBA)
-        background => [255, 255, 255, 255],
         caption => undef,
+        url => undef,
         font_size => 10,
         @_,
     );
@@ -31,67 +29,145 @@ sub qrcode_image {
     my $w = $qrcode_h * $opts{size} + $opts{padding} * 2;
 
     if ($opts{caption}) {
-        my $temp = Image::Imlib2->new($w, $h);
-        $temp->add_font_path(FONT_PATH);
-        $temp->load_font("arial/$opts{font_size}");
-        my ($t_sz_x, $t_sz_y) = $temp->get_text_size($opts{caption});
+        my $t_sz_y = $opts{font_size};
         $h += $t_sz_y + $opts{t_padding};
     }
 
-    my $qi = Image::Imlib2->new($w, $h);
+    my $svg = SVG->new(
+        width => $w,
+        height => $h,
+    );
 
-    # color bg white
-    $qi->set_color(255,255,255,255);
-    $qi->fill_rectangle(0, 0, $w, $h);
+    my $layer = $svg->group(
+        id => 'layer',
+        style => {
+            fill => 'rgb(0,0,0)',
+        },
+    );
+
+    my $qrc_g = $layer->group(
+        id => 'qrcode',
+    );
+
+    my @rects = &qrcode_to_rectangles($rows, $opts{size}, $opts{padding});
+
+    $qrc_g->rectangle(%{$_}) foreach @rects;
 
     if ($opts{caption}) {
-        $qi->set_color(0,0,0,255);
-        $qi->add_font_path(FONT_PATH);
-        $qi->load_font("arial/$opts{font_size}");
-        my ($t_sz_x, $t_sz_y) = $qi->get_text_size($opts{caption});
-        if ($t_sz_x > $w - $opts{padding}*2) {
-            my $nc = ($opts{caption} =~ m#://(.*?)$#);
-            warn "Trimming caption `$opts{caption}` -> `$nc`";
-            $opts{caption} = $nc;
-        }
-        # centered
-        $qi->draw_text(
-            ($w - $t_sz_x) / 2,
-            # note: fudged this calculation a little; t_padding*2 looked better than t_padding
-            $opts{size} * $qrcode_h + $opts{padding} + $opts{t_padding} * 2,
-            $opts{caption},
+        my $t_group = $layer->group(
+            id => 'caption',
+            style => {
+                'font-family' => 'sans-serif',
+                'text-anchor' => 'middle',
+                'font-size' => ($opts{font_size} . "px"),
+            }
         );
+
+        my %text_opts = (
+            x => ($qrcode_h * $opts{size} + $opts{padding} * 2) / 2,
+            y => ($h - $opts{padding}),
+            -cdata => $opts{caption},
+        );
+
+        if ($opts{url}) {
+            my $link = $t_group->anchor(
+                -href => $opts{url}
+            );
+            $link->text(%text_opts);
+        } else {
+            $t_group->text(%text_opts);
+        }
     }
 
+    my $text = $svg->xmlify;
+
+    # do some stripping
+    $text =~ s/(^|\n)\s+//gs;
+
+    $text
+}
+
+sub qrcode_to_rectangles {
+    my (
+        $rows,
+        $size,
+        $padding
+    ) = @_;
+    my @rects;
     foreach my $row_idx (0 .. $#{$rows}) {
         my $row = $rows->[$row_idx];
         foreach my $col_idx (0 .. $#{$row}) {
             if ($row->[$col_idx] eq '*') {
                 # black
-                $qi->set_color(0,0,0,255);
-            } else {
-                # white
-                $qi->set_color(255,255,255,255);
+                push @rects, {
+                    x => $col_idx * $size + $padding,
+                    y => $row_idx * $size + $padding,
+                    width => $size,
+                    height => $size,
+                };
             }
-            $qi->fill_rectangle(
-                $col_idx * $opts{size} + $opts{padding},
-                $row_idx * $opts{size} + $opts{padding},
-                $opts{size},
-                $opts{size},
-            );
+            # else ignore (transparent)
         }
     }
 
-    return $qi;
+    &simplify_rects(@rects)
 }
 
-&qrcode_image(
+# simplify rectangles (minimally)
+sub simplify_rects {
+    my @rects = @_;
+    my $num_simp = 0;
+
+    # simplify rows AND columns of rects
+    # (multiple passes to merge the big ones)
+    for (0..1) {
+        foreach my $rect (@rects) {
+            if ($rect->{delete}) {
+                next;
+            }
+            foreach my $cmp_rect (@rects) {
+                if ($rect == $cmp_rect || $rect->{delete} || $cmp_rect->{delete}) {
+                    next;
+                }
+                if (
+                    $cmp_rect->{x} + $cmp_rect->{width} == $rect->{x} &&
+                    $cmp_rect->{height} == $rect->{height} &&
+                    $cmp_rect->{y} == $rect->{y}
+                ) {
+                    # right edge of $cmp_rect = left edge of $rect - embiggen $cmp_rect to encompass both
+                    $cmp_rect->{width} += $rect->{width};
+                    $rect->{delete} = 1;
+                    ++$num_simp;
+                } elsif (
+                    $cmp_rect->{y} + $cmp_rect->{height} == $rect->{y} &&
+                    $cmp_rect->{width} == $rect->{width} &&
+                    $cmp_rect->{x} == $rect->{x}
+                ) {
+                    # bottom edge of $cmp_rect = top edge of $rect - embiggen $cmp_rect to encompass both
+                    $cmp_rect->{height} += $rect->{height};
+                    $rect->{delete} = 1;
+                    ++$num_simp;
+                }
+            }
+        }
+    }
+
+    printf STDERR "Simplified %d rects\n", $num_simp;
+    grep { !$_->{delete} } @rects;
+}
+
+open my $out_h, '>', OUT
+    or die "Failed to open output file: $!";
+print $out_h &qrcode_svg(
     text => URL,
     size => QR_PIXEL_DIM,
     padding => PADDING,
     t_padding => T_PADDING,
     caption => (URL =~ m#://(.*?)$#),
-    font_size => 10,
-)->save(OUT);
+    url => URL,
+    font_size => 14,
+);
+
+printf STDERR "Wrote to output file %s\n", OUT;
 
 # vi: ts=4 sts=4 sw=4 et
