@@ -124,6 +124,8 @@ July 2008 - January 2009 *(7 months)*
 Technical Experience
 --------------------
 
+<a href="https://stackexchange.com/users/85323"><img src="https://stackexchange.com/users/flair/85323.png" width="208" height="58" align="right"></a>
+
 Open Source
 
 * Avid contributor on GitHub @h3xx ([https://github.com/h3xx](https://github.com/h3xx))
