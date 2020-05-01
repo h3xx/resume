@@ -1,6 +1,5 @@
-<img src="images/qrcode.svg" align="right">
-
-Dan Church
+<link rel="stylesheet" href="css/print.css">
+Dan Church <img class="qrcode" src="images/qrcode.svg" align="right">
 ==========
 
 Computer Software Professional

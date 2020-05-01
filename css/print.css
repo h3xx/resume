@@ -1,0 +1,22 @@
+/* hide the huge "resume" link at the top */
+.markdown-body > h1:first-of-type {
+	display: none;
+}
+
+@media print {
+	.markdown-body {
+		margin: 0 !important;
+	}
+	.footer {
+		display: none;
+	}
+	h1 {
+		margin-top: 0 !important;
+	}
+	img.qrcode {
+		max-width: 15% !important;
+	}
+	p {
+		margin-bottom: 0 !important;
+	}
+}
