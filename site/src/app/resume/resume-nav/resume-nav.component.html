@@ -1,0 +1,15 @@
+<nav *ngIf="this.headers">
+
+	<a
+		*ngFor="let hdr of this.headers"
+		class="navitem" href="#{{ hdr.id }}"
+		[innerHtml]="hdr.text"
+		[class.active]="this.hdr.id === this.activeNavId"
+	></a>
+
+	<div class="social-links">
+		<a class="github" href="https://github.com/h3xx" target="_blank">@h3xx</a>
+		<a class="stackoverflow" href="https://stackexchange.com/users/85323" target="_blank">Dan@Stack Overflow</a>
+	</div>
+
+</nav>
