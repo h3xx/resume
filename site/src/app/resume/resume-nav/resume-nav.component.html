@@ -1,0 +1,44 @@
+<ng-container
+    *ngIf="this.headers"
+>
+    <a
+        *ngIf="this.firstHdr"
+        class="navbar-brand d-md-none"
+        href="#{{ this.firstHdr.id }}"
+    >
+        <img
+            class="mr-1"
+            src="https://www.gravatar.com/avatar/264a95a6903d8a3324bd8d88d4792e01"
+            alt="pic"
+        />
+        <span
+            [innerHtml]="this.firstHdr.text"
+        ></span>
+    </a>
+    <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarCollapse"
+        aria-controls="navbarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+    >
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="nav nav-pills">
+            <li
+                *ngFor="let hdr of this.headers"
+                class="nav-item"
+                [class.active]="this.hdr.id === this.activeNavId"
+            >
+                <a
+                    class="nav-link" href="#{{ hdr.id }}"
+                    [innerHtml]="hdr.text"
+                    [class.active]="this.hdr.id === this.activeNavId"
+                ></a>
+            </li>
+        </ul>
+    </div>
+</ng-container>
