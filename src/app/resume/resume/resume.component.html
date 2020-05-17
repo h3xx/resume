@@ -1,0 +1,19 @@
+<div class="container">
+	<div class="row">
+        <app-resume-nav
+            class="
+            navbar navbar-light bg-light
+            navbar-expand-md col-md-2 d-md-block
+            d-print-none
+        "
+        ></app-resume-nav>
+        <app-resume-text
+            class="page col-auto
+            col-md-10
+            col-print-12
+            "
+            appScrollSpy
+            (sectionChange)="this.onSectionChange($event)"
+        ></app-resume-text>
+	</div>
+</div>

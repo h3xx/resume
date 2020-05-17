@@ -1,0 +1,30 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins/_breakpoints";
+
+// TODO this is sorely missing from the Bootstrap library
+// Source: https://stackoverflow.com/questions/22199429/bootstrap-grid-for-printing
+@media print {
+    .col-print-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+app-resume-text {
+    @media only screen {
+        display: block;
+    }
+}
+
+.page {
+    @include media-breakpoint-up(md) {
+        // activate scrolling and scrollSpy
+        max-height: 100vh;
+        overflow-y: scroll;
+    }
+    @media print {
+        max-height: max-content !important;
+        overflow-y: visible !important;
+    }
+}
