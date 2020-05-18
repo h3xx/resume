@@ -1,10 +1,13 @@
 <div class="container">
 	<div class="row">
-		<div class="col-2 noprint">
+		<div class="col-md-2 d-print-none">
 			<app-resume-nav></app-resume-nav>
 		</div>
-		<div class="col-md">
-			<app-resume-text></app-resume-text>
+		<div class="col-md-10 col-auto">
+            <app-resume-text
+                scrollSpy
+                (sectionChange)="this.onSectionChange($event)"
+            ></app-resume-text>
 		</div>
 	</div>
 </div>

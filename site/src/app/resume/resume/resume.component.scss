@@ -1,5 +1,8 @@
-@media print {
-    .noprint {
-        display: none;
+app-resume-text {
+    display: block;
+    @media not print {
+        // activate scrolling and scrollSpy
+        max-height: 100vh;
+        overflow-y: scroll;
     }
 }

@@ -1,15 +1,70 @@
+<!--
 <nav *ngIf="this.headers">
 
-	<a
-		*ngFor="let hdr of this.headers"
-		class="navitem" href="#{{ hdr.id }}"
-		[innerHtml]="hdr.text"
-		[class.active]="this.hdr.id === this.activeNavId"
-	></a>
+    <div class="scroller">
+        <div class="inner">
+            <a
+                *ngFor="let hdr of this.headers"
+                class="navitem" href="#{{ hdr.id }}"
+                [innerHtml]="hdr.text"
+                [class.active]="this.hdr.id === this.activeNavId"
+            ></a>
+        </div>
+    </div>
 
 	<div class="social-links">
 		<a class="github" href="https://github.com/h3xx" target="_blank">@h3xx</a>
 		<a class="stackoverflow" href="https://stackexchange.com/users/85323" target="_blank">Dan@Stack Overflow</a>
 	</div>
 
+</nav>
+-->
+<!--
+<h1>Current Section : [{{currentSection}}]</h1>
+
+
+<h2>Menu</h2>
+<div (click)="this.scrollTo('section1')" [ngClass]="{ 'current-section': currentSection === 'section1' }">Section 1
+</div>
+<div (click)="this.scrollTo('section2')" [ngClass]="{ 'current-section': currentSection === 'section2' }">Section 2
+</div>
+<div (click)="this.scrollTo('section3')" [ngClass]="{ 'current-section': currentSection === 'section3' }">Section 3
+</div>
+<div (click)="this.scrollTo('section4')" [ngClass]="{ 'current-section': currentSection === 'section4' }">Section 4
+</div>
+<br/>
+-->
+
+
+<nav
+    class="navbar navbar-collapse-md navbar-light bg-light"
+    *ngIf="this.headers"
+>
+    <a
+        *ngIf="this.firstHdr"
+        class="navbar-brand d-lg-none"
+        href="#{{ this.firstHdr.id }}"
+    >
+        <img
+            class="mr-1"
+            src="https://www.gravatar.com/avatar/264a95a6903d8a3324bd8d88d4792e01"
+            alt="pic"
+        />
+        <span
+            [innerHtml]="this.firstHdr.text"
+        ></span>
+    </a>
+    <ul class="nav nav-pills">
+        <li
+            *ngFor="let hdr of this.headers"
+            class="nav-item"
+            [class.active]="this.hdr.id === this.activeNavId"
+        >
+            <a
+                class="nav-link" href="#{{ hdr.id }}"
+                [innerHtml]="hdr.text"
+                [class.active]="this.hdr.id === this.activeNavId"
+            ></a>
+        </li>
+    </ul>
 </nav>

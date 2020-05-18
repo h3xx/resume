@@ -1,7 +1,6 @@
 import {
     Component,
     OnDestroy,
-    OnInit,
 } from '@angular/core';
 import {
     Subscription,
@@ -17,9 +16,10 @@ import { HeadersService } from '../headers.service';
     ],
     templateUrl: './resume-nav.component.html',
 })
-export class ResumeNavComponent implements OnDestroy, OnInit {
+export class ResumeNavComponent implements OnDestroy {
 
     private readonly _subscriptions: Subscription[] = [];
+    public firstHdr?: Header;
     public headers?: Header[];
     public activeNavId?: string;
 
@@ -29,7 +29,15 @@ export class ResumeNavComponent implements OnDestroy, OnInit {
         this._subscriptions.push(
             this.headersService.headers.subscribe(
                 (val: Header[] | undefined): void => {
-                    this.headers = val;
+                    if (Array.isArray(val)) {
+                        this.firstHdr = val.shift();
+                        this.headers = val;
+                    }
+                }
+            ),
+            this.headersService.currentHeaderId.subscribe(
+                (val: string | undefined): void => {
+                    this.activeNavId = val;
                 }
             ),
         );
@@ -42,25 +50,5 @@ export class ResumeNavComponent implements OnDestroy, OnInit {
             }
         );
     } // end ngOnDestroy()
-
-    public ngOnInit(): void {
-        window.addEventListener('scroll', () => {
-            if (this.headers) {
-                this.headers.forEach(
-                    (hdr: Header): void => {
-                        const hElement: HTMLElement | null = document.querySelector(`#${hdr.id}`) as HTMLElement;
-                        if (hElement) {
-                            if (
-                                hElement.offsetTop <= window.scrollY &&
-                                hElement.offsetTop + hElement.offsetHeight > window.scrollY
-                            ) {
-                                this.activeNavId = hdr.id;
-                            }
-                        }
-                    }
-                );
-            }
-        });
-    }
 
 }

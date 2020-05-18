@@ -1,19 +1,62 @@
-:host {
-    position: fixed;
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins/_breakpoints";
+
+.navbar-brand {
+    img {
+        max-width: 1.5em;
+        max-height: 1.5em;
+    }
 }
 
+/*
 nav {
+    position: fixed;
+
+    @media only screen and (max-width: 650px) {
+        background-color: #000;
+        // float: left;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+        font-size: 0.8rem;
+    }
+
+    @media only screen and (max-width: 650px) {
+        .scroller {
+            overflow-x: scroll;
+            overflow-y: hidden;
+            white-space: nowrap;
+            // float: left;
+
+            .inner {
+                width: 2000px;
+            }
+        }
+    }
 
     .navitem, .social-links {
         padding-top: 1.5rem;
         display: block;
         position: relative;
+        @media only screen and (max-width: 650px) {
+            // float: left;
+            // padding: 2.6rem 1.1rem 1.8rem;
+            padding: 1em;
+            display: inline-block;
+        }
     }
 
     .navitem {
         border-right: 2px solid #000000;
         padding-right: 1em;
         text-transform: uppercase;
+
+        @media only screen and (max-width: 650px) {
+            color: #888;
+            border: none;
+        }
 
         &::after {
             background: #FFFFFF;
@@ -32,10 +75,16 @@ nav {
         }
         &.active::after {
             opacity: 1;
+            @media only screen and (max-width: 650px) {
+                color: #fff;
+            }
         }
     }
 
     .social-links {
+        @media only screen and (max-width: 650px) {
+            display: none;
+        }
         a {
             background-repeat: no-repeat;
             background-size: contain;
@@ -60,3 +109,4 @@ nav {
     }
 
 }
+*/

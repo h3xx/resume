@@ -8,14 +8,16 @@
 </div>
 
 <!--
-	Note: sanitizeHtml=true will strip id attributes from <h[1-6]> and we need that for navigation.
+    Note: sanitizeHtml=true will strip id attributes from <h[1-6]> and we need that for navigation.
 -->
 <ngx-md
-	path="assets/README.md"
-	[sanitizeHtml]="false"
-	(loaded)="this.onMarkdownLoad()"
+    path="assets/README.md"
+    [sanitizeHtml]="false"
+    (loaded)="this.onMarkdownLoad()"
 ></ngx-md>
 
-<footer>
+<footer
+    class="d-print-none"
+>
 	This site is open source. <a href="https://github.com/h3xx/resume/edit/master/README.md">Improve this page</a>.
 </footer>
