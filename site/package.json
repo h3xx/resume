@@ -21,7 +21,7 @@
     "@angular/router": "~9.1.7",
     "@types/marked": "^0.7.4",
     "angularx-qrcode": "^2.1.1",
-    "bootstrap": "^4.5.0",
+    "bootstrap": "^4.4.1",
     "ngx-md": "^8.1.6",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
