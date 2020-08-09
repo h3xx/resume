@@ -18,7 +18,7 @@ export class ResumeComponent {
     ) {
     } // end constructor()
 
-    public onSectionChange(sectionId: string) {
+    public onSectionChange(sectionId: string): void {
         this.headersService.currentHeaderId.next(sectionId);
     } // end onSectionChange()
 
