@@ -14,6 +14,10 @@ interface FlagsType {
     readonly header: boolean;
 }
 
+interface Slugger {
+    slug(raw: string): string;
+}
+
 @Component({
     encapsulation: ViewEncapsulation.None,
     selector: 'app-resume-text',
@@ -67,7 +71,7 @@ export class ResumeTextComponent {
         private readonly mdService: NgxMdService,
     ) {
         // this.mdService.renderer.heading = (text, level: number, raw, slugger) => {
-        this.mdService.renderer.heading = (text: string, level: levelType, raw: string, slugger: any): string => {
+        this.mdService.renderer.heading = (text: string, level: levelType, raw: string, slugger: Slugger): string => {
             const id = `${this.headersService.headerPrefix}${slugger.slug(raw)}`;
             this.observedHeaders.push({
                 id,

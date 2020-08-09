@@ -1,7 +1,7 @@
 <div class="qr" *ngIf="this.qrcodeUrl">
 	<qrcode
 		[qrdata]="this.qrcodeUrl"
-		width="166"
+		[width]="166"
 		errorCorrectionLevel="M"
 	></qrcode>
 	{{ this.qrcodeCaption }}

@@ -14,15 +14,15 @@ export class ScrollSpyDirective {
     private currentSection?: string;
 
     constructor(
-        private readonly elementRef: ElementRef
+        private readonly elementRef: ElementRef,
     ) {
     } // end constructor()
 
     @HostListener('scroll', ['$event'])
-    public onScroll(event: any): void {
-        if (this.elementRef) {
-            const scrollTop = event.target.scrollTop;
-            const parentOffset = event.target.offsetTop;
+    public onScroll(event: Event): void {
+        if (this.elementRef && event.target) {
+            const scrollTop = (event.target as HTMLElement).scrollTop;
+            const parentOffset = (event.target as HTMLElement).offsetTop;
             (this.elementRef.nativeElement.querySelectorAll('[id]') as NodeListOf<HTMLElement>).forEach(
                 (elem: HTMLElement): void => {
                     if ((elem.offsetTop - parentOffset) <= scrollTop) {
