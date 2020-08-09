@@ -1,8 +1,5 @@
 {
   "extends": "tslint:recommended",
-  "rulesDirectory": [
-    "codelyzer"
-  ],
   "rules": {
     "adjacent-overload-signatures": true,
     "align": {
@@ -16,7 +13,16 @@
       "array"
     ],
     "arrow-return-shorthand": true,
+    "await-promise": true,
     "ban-comma-operator": true,
+    "ban-types": [
+      true,
+      ["Array", "Use [] instead."],
+      ["Function", "Use '() => T' any instead."],
+      ["Number", "Use 'number' instead."],
+      ["Object", "Use {} instead."],
+      ["String", "Use 'string' instead."]
+    ],
     "callable-types": true,
     "class-name": true,
     "comment-format": [
@@ -36,12 +42,20 @@
     "deprecation": {
       "severity": "warning"
     },
+    "component-class-suffix": true,
+    "contextual-lifecycle": true,
     "directive-class-suffix": true,
     "directive-selector": [
       true,
       "attribute",
       "app",
       "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "app",
+      "kebab-case"
     ],
     "eofline": true,
     "forin": true,
@@ -82,6 +96,7 @@
     ],
     "new-parens": false,
     "no-angle-bracket-type-assertion": true,
+    "no-any": true,
     "no-arg": true,
     "no-bitwise": true,
     "no-boolean-literal-compare": true,
@@ -107,6 +122,7 @@
     "no-host-metadata-property": true,
     "no-implicit-dependencies": [
       true,
+      "dev",
       [
         "@app",
         "@e2e"
@@ -219,6 +235,10 @@
       true,
       "allow-null-check"
     ],
+    "typedef": [
+      true,
+      "call-signature"
+    ],
     "typedef-whitespace": {
       "options": [
         {
@@ -243,9 +263,11 @@
     "use-pipe-transform-interface": true,
     "variable-name": {
       "options": [
+        "allow-leading-underscore",
+        "allow-pascal-case",
         "ban-keywords",
         "check-format",
-        "allow-pascal-case"
+        "require-const-for-all-caps"
       ]
     },
     "whitespace": {
@@ -258,5 +280,8 @@
         "check-typecast"
       ]
     }
-  }
+  },
+  "rulesDirectory": [
+    "codelyzer"
+  ]
 }
