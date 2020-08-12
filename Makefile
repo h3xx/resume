@@ -9,6 +9,7 @@ deploy: angular-prod
 	git reset .
 	for fn in dist/resume/*; do mv $$fn . && git add $$(basename $$fn); done
 	git commit -m 'Deploy GitHub pages site'
+	git branch --set-upstream-to="$$(git config "branch.main.remote")/gh-pages"; true
 
 
 .PHONY: angular-prod deploy
