@@ -1,3 +1,26 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins/_breakpoints";
+@import "node_modules/bootstrap/scss/mixins/_transition";
+
+:host {
+    font-size: 16px;
+    @include media-breakpoint-up(md) {
+        background-color: var(--info) !important;
+        background-image: url(images/vintage-wallpaper-mask.png);
+
+        a.nav-link {
+            @include transition(all 0.1s ease-in);
+            color: white;
+
+            &:hover {
+                background-color: var(--cyan);
+                opacity: 0.75;
+            }
+        }
+    }
+}
+
 .navbar-brand {
     img {
         max-width: 1.5em;

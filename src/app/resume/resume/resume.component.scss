@@ -1,30 +1,65 @@
+@use 'sass:list';
+
 @import "node_modules/bootstrap/scss/functions";
 @import "node_modules/bootstrap/scss/variables";
 @import "node_modules/bootstrap/scss/mixins/_breakpoints";
+@import "node_modules/bootstrap/scss/mixins/_transition";
 
-// TODO this is sorely missing from the Bootstrap library
-// Source: https://stackoverflow.com/questions/22199429/bootstrap-grid-for-printing
+@function opacify-shadow($shadow, $new-opacity) {
+    $new-shadow: $shadow;
+    $color: nth($shadow, length($shadow));
+    // make it darker, upping opacity 0.175 -> 0.5
+    $color: rgba($color, $new-opacity);
+    @return list.set-nth($new-shadow, length($shadow), $color);
+}
+
+@mixin hoverdarken($shadow, $how-much: 0.5) {
+    // Special effects
+    &-hoverdarken {
+        @include transition(all 0.1s ease-in);
+        &:hover {
+            box-shadow: #{opacify-shadow($shadow, 0.5)} !important;
+        }
+    }
+}
+
+@media only screen {
+    @include media-breakpoint-up(md) {
+        ::ng-deep body {
+            background-image: url(images/dust_scratches.png);
+        }
+        .container {
+            // make clicking <=> scrolling work properly in the nav
+            margin-bottom: 75vh;
+        }
+
+        // TODO these are more sorely missing class from the Bootstrap library
+        .-shadow-md {
+            box-shadow: $box-shadow !important;
+        }
+
+        .-shadow-md-lg {
+            box-shadow: $box-shadow-lg !important;
+            @include hoverdarken($box-shadow-lg);
+        }
+    }
+}
+
 @media print {
-    .col-print-12 {
+    // TODO this is sorely missing from the Bootstrap library
+    // Source: https://stackoverflow.com/questions/22199429/bootstrap-grid-for-printing
+    .-col-print-12 {
         flex: 0 0 100%;
         max-width: 100%;
     }
-}
 
-app-resume-text {
-    @media only screen {
-        display: block;
+    .-p-print-0 {
+        padding: 0 !important;
     }
-}
 
-.page {
-    @include media-breakpoint-up(md) {
-        // activate scrolling and scrollSpy
-        max-height: 100vh;
-        overflow-y: scroll;
+    .-my-print-0 {
+        margin-bottom: 0 !important;
+        margin-top: 0 !important;
     }
-    @media print {
-        max-height: max-content !important;
-        overflow-y: visible !important;
-    }
+
 }
