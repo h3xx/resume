@@ -1,9 +1,0 @@
-<ng-container *ngIf="this.url; else text">
-    <a [href]="this.url" target="_blank">
-        <ng-container *ngTemplateOutlet="text">
-        </ng-container>
-    </a>
-</ng-container>
-<ng-template #text>
-    Fork me on GitHub
-</ng-template>

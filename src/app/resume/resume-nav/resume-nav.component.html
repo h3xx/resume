@@ -2,41 +2,46 @@
     *ngIf="this.headers"
 >
     <a
-        *ngIf="this.firstHdr"
         class="navbar-brand d-md-none"
         href="#{{ this.firstHdr.id }}"
+        *ngIf="this.firstHdr"
     >
         <img
+            alt="pic"
             class="mr-1"
             src="https://www.gravatar.com/avatar/264a95a6903d8a3324bd8d88d4792e01"
-            alt="pic"
         />
         <span
             [innerHtml]="this.firstHdr.text"
         ></span>
     </a>
     <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarCollapse"
         aria-controls="navbarCollapse"
         aria-expanded="false"
         aria-label="Toggle navigation"
+        class="navbar-toggler"
+        data-target="#navbarCollapse"
+        data-toggle="collapse"
+        type="button"
     >
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="nav nav-pills">
+        <ul class="
+            flex-column
+            nav
+            nav-pills
+        ">
             <li
-                *ngFor="let hdr of this.headers"
-                class="nav-item"
                 [class.active]="this.hdr.id === this.activeNavId"
+                class="nav-item"
+                *ngFor="let hdr of this.headers"
             >
                 <a
-                    class="nav-link" href="#{{ hdr.id }}"
-                    [innerHtml]="hdr.text"
                     [class.active]="this.hdr.id === this.activeNavId"
+                    class="nav-link"
+                    href="#{{ hdr.id }}"
+                    [innerHtml]="hdr.text"
                 ></a>
             </li>
         </ul>

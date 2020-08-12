@@ -1,0 +1,22 @@
+<ng-container *ngIf="this.url">
+    <a
+        class="{{ this.alignment }}"
+        [href]="this.url"
+        target="_blank"
+    >
+        <div
+            class="stripe"
+        >
+            <div
+                class="text1"
+            >
+                {{ this.text1 }}
+            </div>
+            <div
+                class="text2"
+            >
+                {{ this.text2 }}
+            </div>
+        </div>
+    </a>
+</ng-container>

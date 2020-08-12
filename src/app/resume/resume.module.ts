@@ -11,6 +11,7 @@ import { NgxMdModule } from 'ngx-md';
 // *******************************************************************************
 // App Components
 
+import { ForkmeComponent } from './forkme/forkme.component';
 import { ResumeNavComponent } from './resume-nav/resume-nav.component';
 import { ResumeTextComponent } from './resume-text/resume-text.component';
 import { ResumeComponent } from './resume/resume.component';
@@ -20,17 +21,12 @@ import { ResumeComponent } from './resume/resume.component';
 
 import { HeadersService } from './headers.service';
 
-// *******************************************************************************
-// Directives
-
-import { ScrollSpyDirective } from './scroll-spy.directive';
-
 @NgModule({
     declarations: [
+        ForkmeComponent,
         ResumeComponent,
         ResumeNavComponent,
         ResumeTextComponent,
-        ScrollSpyDirective,
     ],
     exports: [
         ResumeComponent,

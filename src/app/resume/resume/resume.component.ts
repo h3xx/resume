@@ -1,5 +1,8 @@
 import {
     Component,
+    ElementRef,
+    HostListener,
+    ViewChild,
 } from '@angular/core';
 
 import { HeadersService } from '../headers.service';
@@ -13,13 +16,35 @@ import { HeadersService } from '../headers.service';
 })
 export class ResumeComponent {
 
+    private currentSection?: string;
+
+    @ViewChild('resumeText', { read: ElementRef }) private readonly resumeText?: ElementRef<HTMLElement>;
+
     constructor(
+        private readonly elementRef: ElementRef<HTMLElement>,
         private readonly headersService: HeadersService,
     ) {
     } // end constructor()
 
-    public onSectionChange(sectionId: string): void {
+    private onSectionChange(sectionId: string): void {
         this.headersService.currentHeaderId.next(sectionId);
     } // end onSectionChange()
+
+    @HostListener('window:scroll', ['$event'])
+    public onWindowScroll(event: Event): void {
+        if (this.resumeText?.nativeElement && event.currentTarget) {
+            const scrollY = (event.currentTarget as Window).scrollY;
+            const parentOffset = this.elementRef.nativeElement.offsetTop;
+            (this.resumeText.nativeElement.querySelectorAll('[id]') as NodeListOf<HTMLElement>).forEach(
+                (elem: HTMLElement): void => {
+                    if ((elem.offsetTop - parentOffset) <= scrollY) {
+                        if (elem.id !== this.currentSection) {
+                            this.currentSection = elem.id;
+                            this.onSectionChange(this.currentSection);
+                        }
+                    }
+                });
+        }
+    } // end onWindowScroll()
 
 }
