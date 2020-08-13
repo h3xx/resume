@@ -1,7 +1,9 @@
 import {
     Component,
     ElementRef,
+    EventEmitter,
     HostListener,
+    Output,
     ViewChild,
 } from '@angular/core';
 
@@ -16,6 +18,8 @@ import { HeadersService } from '../headers.service';
 })
 export class ResumeComponent {
 
+    @Output() private readonly printClicked = new EventEmitter<undefined>();
+
     private currentSection?: string;
 
     @ViewChild('resumeText', { read: ElementRef }) private readonly resumeText?: ElementRef<HTMLElement>;
@@ -27,6 +31,7 @@ export class ResumeComponent {
     } // end constructor()
 
     public onClickPrint(): void {
+        this.printClicked.emit();
         window.print();
     } // end onClickPrint()
 
