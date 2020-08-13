@@ -1,0 +1,11 @@
+<app-tip-balloon
+    class="top-right"
+    *ngIf="this.dialogContent"
+>
+    <ng-container *ngTemplateOutlet="this.dialogContent"></ng-container>
+</app-tip-balloon>
+<div
+    class="clippy f{{ this._currentFrame?.frame }}"
+    (click)="this.onClick()"
+>
+</div>

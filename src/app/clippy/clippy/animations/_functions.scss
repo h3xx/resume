@@ -1,0 +1,39 @@
+@mixin clframe($i) {
+    $ident: $i;
+    @if ($i < 10) {
+        $ident: "00#{$i}";
+    } @else if ($i < 100) {
+        $ident: "0#{$i}";
+    }
+    background-image: url(../frames/frame_#{$ident}.png);
+}
+
+@function tick-pct($ticks, $tick) {
+    @if (type-of($tick) == list) {
+        $tick-begin: nth($tick, 1);
+        $tick-end: nth($tick, 2);
+        $ret: "#{($tick-begin/$ticks)*100}%";
+        @if ($tick-end != $tick-begin) {
+            $ret: "#{$ret},#{($tick-end/$ticks)*100}%";
+        }
+        @return $ret;
+    } @else {
+        @return "#{($tick/$ticks)*100}%";
+    }
+}
+
+@mixin kf-tick($ticks, $tick) {
+    #{tick-pct($ticks, $tick)} {
+        @content;
+    }
+}
+
+@mixin kf-frames($anim-name, $ticks, $frames) {
+    @keyframes #{$anim-name} {
+        @each $tick, $frame in $frames {
+            @include kf-tick($ticks, $tick) {
+                @include clframe($frame);
+            }
+        }
+    }
+}
