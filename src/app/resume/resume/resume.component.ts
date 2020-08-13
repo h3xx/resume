@@ -26,6 +26,10 @@ export class ResumeComponent {
     ) {
     } // end constructor()
 
+    public onClickPrint(): void {
+        window.print();
+    } // end onClickPrint()
+
     private onSectionChange(sectionId: string): void {
         this.headersService.currentHeaderId.next(sectionId);
     } // end onSectionChange()

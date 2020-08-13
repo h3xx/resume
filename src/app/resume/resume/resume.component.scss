@@ -36,6 +36,7 @@
         // TODO these are more sorely missing class from the Bootstrap library
         .-shadow-md {
             box-shadow: $box-shadow !important;
+            @include hoverdarken($box-shadow);
         }
 
         .-shadow-md-lg {
