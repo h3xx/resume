@@ -1,0 +1,11 @@
+@mixin add-frames($cell-width, $cell-height, $source-width, $to, $from: 0) {
+    $cols-in-source: $source-width / $cell-width;
+    @for $i from $from through $to {
+        &.f#{$i} {
+            // @include frame-sprites($cell-width, $cell-height, $source-width, $i);
+            $col: $i % $cols-in-source;
+            $row: floor($i / $cols-in-source);
+            background-position: (-$col * $cell-width) (-$row * $cell-height);
+        }
+    }
+}
