@@ -1,0 +1,21 @@
+@import 'functions';
+@import 'vars';
+
+@mixin anim-look-right() {
+    $ticks: 17;
+    &.LookRight {
+        animation: look-right ($tick-length*$ticks) $animation-timing-function 1;
+    }
+    $frames: (
+        0: 0,
+        // exitBranch: 5
+        1: 194,
+        // exitBranch: 4
+        2: 195,
+        (3, 14): 196,
+        15: 197,
+        16: 198,
+        17: 0,
+    );
+    @include kf-frames('look-right', $ticks, $frames);
+}

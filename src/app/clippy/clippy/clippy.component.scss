@@ -1,0 +1,25 @@
+@import '../functions';
+$cell-width: 124px;
+$cell-height: 93px;
+
+:host {
+    display: block;
+}
+
+.clippy {
+    cursor: pointer;
+    height: $cell-height;
+    position: absolute;
+    width: $cell-width;
+    z-index: 1000;
+    bottom: 0;
+
+    background-image: url(map.png);
+    @include add-frames(
+        $cell-width: $cell-width,
+        $cell-height: $cell-height,
+        $source-width: 3348px,
+        $to: 901,
+    );
+
+}
