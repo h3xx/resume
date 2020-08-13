@@ -1,0 +1,35 @@
+@import 'functions';
+@import 'vars';
+
+@mixin anim-alert() {
+    $ticks: 24;
+    &.Alert {
+        animation: alert ($tick-length*$ticks) $animation-timing-function 1;
+    }
+    $frames: (
+        0: 0,
+        1: 343,
+        2: 344,
+        4: 345,
+        5: 346,
+        6: 347,
+        7: 348,
+        8: 349,
+        9: 350,
+        10: 351,
+        // exitBranch: 13
+        (11, 15): 352,
+        // exitBranch: 13
+        16: 353,
+        17: 354,
+        18: 355,
+        19: 356,
+        20: 357,
+        21: 358,
+        22: 359,
+        23: 360,
+        24: 0,
+    );
+    @include kf-frames('alert', $ticks, $frames);
+
+}

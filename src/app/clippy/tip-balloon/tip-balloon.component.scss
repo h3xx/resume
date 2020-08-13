@@ -1,0 +1,119 @@
+$speech-arrow-height: 16px;
+$speech-arrow-width: 10px;
+$office-yellow: #ffc;
+
+:host {
+    background-color: $office-yellow;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+    max-width: 234px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1000;
+
+    .arrow {
+        background-image: url(images/arrow-top-left.png);
+        height: $speech-arrow-height;
+        position: absolute;
+        width: $speech-arrow-width;
+    }
+
+    &.top-left,
+    &.top-right {
+        bottom: 95px;
+    }
+
+    &.top-left {
+        left: -60px;
+        .arrow {
+            left: 86px;
+            top: 100%;
+        }
+    }
+
+    &.top-right {
+        left: 35px;
+        .arrow {
+            transform: scaleX(-1);
+            left: 50px;
+            top: 100%;
+        }
+    }
+
+    &.bottom-left {
+        .arrow {
+            // TODO unfinished positioning
+            transform: scaleY(-1);
+            left: 100%;
+            margin-left: -50px;
+            margin-top: -$speech-arrow-height;
+            top: 0;
+        }
+    }
+
+    &.bottom-right {
+        .arrow {
+            // TODO unfinished positioning
+            transform: scaleX(-1) scaleY(-1);
+            left: 0;
+            margin-left: 50px;
+            margin-top: -$speech-arrow-height;
+            top: 0;
+        }
+    }
+
+}
+
+.content {
+    // TODO font styling
+    font-family: "Microsoft Sans", sans-serif;
+    font-size: 10pt;
+    min-width: 120px;
+
+    ::ng-deep {
+        ul {
+            padding-left: 18px;
+            li {
+                list-style-image: url(../images/bullet.png);
+                &:hover {
+                    list-style-image: url(../images/bullet-active.png);
+                }
+            }
+        }
+
+        // TODO provide flex layout for buttons
+        .button-bar {
+        }
+
+        $gray: #c0c0c0;
+        $ltgray: #e7e7e7;
+        $dkgray: #868686;
+        button {
+            background-color: $office-yellow;
+            border-radius: 3px;
+            border: 1px solid $gray;
+            &:hover {
+                //border-left-color: white;
+                //border-top-color: white;
+                border-color: white $dkgray $dkgray white;
+                box-shadow:
+                    1px 1px $gray,
+                    -1px -1px $ltgray;
+
+                .bullet {
+                    background-image: url(../images/bullet-active.png);
+                }
+            }
+
+            .bullet {
+                background-image: url(../images/bullet.png);
+                background-repeat: none;
+                display: inline-block;
+                height: 10px;
+                width: 10px;
+            }
+        }
+    }
+}
