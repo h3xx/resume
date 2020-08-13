@@ -1,0 +1,257 @@
+@import 'functions';
+@import 'vars';
+
+@mixin anim-checking-something() {
+    $ticks: 33.4;
+    &.CheckingSomething {
+        animation: checking-something ($tick-length*$ticks) $animation-timing-function 1;
+    }
+
+    $frames: (
+        // sound: sound15,
+        0: 0,
+        // sound: sound13,
+        1: 444,
+        2: 445,
+        3: 446,
+        4: 447,
+        5: 448,
+        6: 449,
+        7: 450,
+        (8, 9): 451,
+        (10, 11): 452,
+        (12, 13): 453,
+        // sound: sound10
+        14: 454,
+        // exitBranch: 52,
+        15: 455,
+        // XXX duration: 140
+        (16, 16.4): 456,
+        17.4: 457,
+        18.4: 458,
+        19.4: 459,
+
+        (20.4, 21.4): 460,
+        22.4: 461,
+        23.4: 462,
+        24.4: 463,
+
+        //exitBranch: 22,
+        //branching: {
+        //    branches: [
+        //        {
+        //            frameIndex: 21,
+        //            weight: 50,
+        //        },
+        //    ],
+        //},
+        (25.4, 26.4): 464,
+
+        27.4: 465,
+        28.4: 466,
+
+        //exitBranch: 25,
+        //branching: {
+        //    branches: [
+        //        {
+        //            frameIndex: 24,
+        //            weight: 50,
+        //        }
+        //    ],
+        //}
+        (29.4, 30.4): 467,
+
+        31.4: 468,
+        32.4: 469,
+        33.4: 470,
+
+        /*
+                {
+                    duration: 200,
+                    frame: 471,
+                    exitBranch: 29,
+                    branching: {
+                        branches: [
+                            {
+                                frameIndex: 28,
+                                weight: 50,
+                            }
+                        ],
+                    }
+                },
+                {
+                    duration: 100,
+                    frame: 472,
+                },
+                {
+                    duration: 100,
+                    frame: 473,
+                },
+                {
+                    duration: 200,
+                    frame: 474,
+                    exitBranch: 32,
+                    branching: {
+                        branches: [
+                            {
+                                frameIndex: 31,
+                                weight: 50,
+                            },
+                        ],
+                    },
+                },
+                {
+                    duration: 100,
+                    frame: 475,
+                },
+                {
+                    duration: 100,
+                    frame: 476,
+                },
+                {
+                    duration: 100,
+                    frame: 477,
+                },
+                {
+                    duration: 100,
+                    frame: 478,
+                },
+                {
+                    duration: 200,
+                    frame: 479,
+                    exitBranch: 37,
+                    branching: {
+                        branches: [
+                            {
+                                frameIndex: 36,
+                                weight: 50,
+                            }
+                        ],
+                    }
+                },
+                {
+                    duration: 100,
+                    frame: 480,
+                },
+                {
+                    duration: 100,
+                    frame: 481,
+                },
+                {
+                    duration: 200,
+                    frame: 482,
+                    exitBranch: 40,
+                    branching: {
+                        branches: [
+                            {
+                                frameIndex: 39,
+                                weight: 50,
+                            }
+                        ],
+                    }
+                },
+                {
+                    duration: 100,
+                    frame: 483,
+                },
+                {
+                    duration: 100,
+                    frame: 484,
+                    exitBranch: 50,
+                },
+                {
+                    duration: 100,
+                    frame: 485,
+                    branching: {
+                        branches: [
+                            {
+                                frameIndex: 14,
+                                weight: 75,
+                            }
+                        ],
+                    }
+                },
+                {
+                    duration: 100,
+                    frame: 486,
+                },
+                {
+                    duration: 200,
+                    frame: 487,
+                    exitBranch: 51,
+                    branching: {
+                        branches: [
+                            {
+                                frameIndex: 44,
+                                weight: 50,
+                            }
+                        ],
+                    }
+                },
+                {
+                    duration: 100,
+                    frame: 488,
+                },
+                {
+                    duration: 100,
+                    frame: 489,
+                },
+                {
+                    duration: 100,
+                    frame: 490,
+                },
+                {
+                    duration: 100,
+                    frame: 491,
+                    exitBranch: 49,
+                    branching: {
+                        branches: [
+                            {
+                                frameIndex: 48,
+                                weight: 85,
+                            }
+                        ],
+                    }
+                },
+                {
+                    duration: 100,
+                    frame: 492,
+                    // sound: sound10
+                },
+                {
+                    duration: 100,
+                    frame: 493,
+                    exitBranch: 52,
+                    branching: {
+                        branches: [
+                            {
+                                frameIndex: 10,
+                                weight: 100,
+                            }
+                        ],
+                    }
+                },
+                {
+                    duration: 100,
+                    frame: 494,
+                },
+                {
+                    duration: 100,
+                    frame: 495,
+                    // sound: sound14
+                },
+                {
+                    duration: 100,
+                    frame: 496,
+                },
+                {
+                    duration: 100,
+                    frame: 0,
+                }
+                */
+
+    );
+
+    @include kf-frames('checking-something', $ticks, $frames);
+
+}
