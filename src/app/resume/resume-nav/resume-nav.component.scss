@@ -6,7 +6,7 @@
 :host {
     font-size: 16px;
     @include media-breakpoint-up(md) {
-        background-color: var(--info) !important;
+        background-color: darken($cyan, 20%) !important;
         background-image: url(images/vintage-wallpaper-mask.png);
 
         a.nav-link {
