@@ -30,9 +30,6 @@ export class ResumeTextComponent {
 
     private readonly observedHeaders: Header[] = [];
 
-    public readonly qrcodeUrl = 'https://h3xx.github.io/resume';
-    public readonly qrcodeCaption = 'h3xx.github.io/resume';
-
     private readonly descriptiveMap: [RegExp, () => string ][] = [
         [
             // if > 7 years, it's pretty OP

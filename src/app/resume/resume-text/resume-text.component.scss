@@ -2,6 +2,10 @@
 @import "node_modules/bootstrap/scss/variables";
 @import "node_modules/bootstrap/scss/mixins/_breakpoints";
 
+$qrcode-width: 115px;
+$qrcode-width-md: $qrcode-width * 0.75;
+$qrcode-width-sm: $qrcode-width * 0.5;
+
 a {
     color: var(--info);
     text-decoration: none;
@@ -19,12 +23,21 @@ footer {
 
 .qr {
     float: right;
+    // Move out from under "Fork Me"
+    margin: 15px;
+    max-width: $qrcode-width;
     text-align: center;
     @include media-breakpoint-down(md) {
-        zoom: 75%;
+        max-width: $qrcode-width-md;
     }
     @include media-breakpoint-down(sm) {
-        zoom: 50%;
+        // No "Fork Me" in sm
+        margin: 0;
+        max-width: $qrcode-width-sm;
+    }
+    @media print {
+        // Make align with first header
+        margin: 0 !important;
     }
 }
 

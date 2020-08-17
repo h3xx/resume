@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 // *******************************************************************************
 // Libs
 
-import { QRCodeModule } from 'angularx-qrcode';
 import { NgxMdModule } from 'ngx-md';
 
 // *******************************************************************************
@@ -36,7 +35,6 @@ import { HeadersService } from './headers.service';
         HttpClientModule,
 
         NgxMdModule,
-        QRCodeModule,
     ],
     providers: [
         HeadersService,

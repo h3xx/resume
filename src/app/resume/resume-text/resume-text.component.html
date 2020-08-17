@@ -1,11 +1,7 @@
-<div class="qr" *ngIf="this.qrcodeUrl">
-	<qrcode
-		[qrdata]="this.qrcodeUrl"
-		[width]="166"
-		errorCorrectionLevel="M"
-	></qrcode>
-	{{ this.qrcodeCaption }}
-</div>
+<img
+    class="qr"
+    src="assets/qrcode.svg"
+/>
 
 <!--
     Note: sanitizeHtml=true will strip id attributes from <h[1-6]> and we need that for navigation.
