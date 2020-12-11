@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { ClippyModule } from './clippy/clippy.module';
+import { CookieMsgComponent } from './cookie-msg/cookie-msg.component';
 import { ResumeModule } from './resume/resume.module';
 
 @NgModule({
@@ -12,6 +13,7 @@ import { ResumeModule } from './resume/resume.module';
     ],
     declarations: [
         AppComponent,
+        CookieMsgComponent,
     ],
     imports: [
         BrowserModule,
