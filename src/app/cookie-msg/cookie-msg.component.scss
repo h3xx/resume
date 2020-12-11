@@ -1,0 +1,12 @@
+:host {
+    background-color: var(--info);
+    bottom: 0;
+    color: white;
+    font-size: 80%;
+    font-weight: bold;
+    padding: 0.25em;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    z-index: 5000;
+}
