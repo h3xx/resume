@@ -66,9 +66,13 @@ Skills & Expertise
 Experience
 ----------
 
+**Support Technician, Nagios, Inc.**
+
+September 2020 - Present
+
 **Software Engineer, G2Planet, Inc.**
 
-October 2013 - Present *(7 years)*
+October 2013 - August 2020 *(7 years)*
 
 * Lead developer on EventMAX 2.0 platform
 * Lead developer on EventCENTRAL platform
