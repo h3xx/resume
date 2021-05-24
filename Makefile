@@ -1,7 +1,7 @@
 all: angular-prod
 
 angular-prod:
-	npm install && npx ng build --prod
+	pnpm install --prefer-frozen-lockfile && pnpx ng build --prod
 
 deploy: angular-prod
 	git checkout -f gh-pages || git checkout --orphan=gh-pages
