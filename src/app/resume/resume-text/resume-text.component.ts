@@ -31,6 +31,7 @@ export class ResumeTextComponent {
     private readonly observedHeaders: Header[] = [];
 
     private readonly descriptiveMap: [RegExp, () => string ][] = [
+        /*
         [
             // if > 7 years, it's pretty OP
             // (Caveat: must come before plain expert)
@@ -61,6 +62,7 @@ export class ResumeTextComponent {
             new RegExp(`^\\s*\\(beginner`, 'i'),
             () => this.check(1),
         ],
+        */
     ];
 
     constructor(
@@ -77,8 +79,8 @@ export class ResumeTextComponent {
             return this.oldHeadingCopy(text, level, id);
         };
 
-        this.mdService.renderer.tablecell = (content: string, flags: FlagsType): string => {
-            return this.replaceDescriptionWithIcon(content, flags);
+        this.mdService.renderer.table = (header: string, body: string): string => {
+            return this.replaceTableWithGraph(header, body);
         };
 
         this.mdService.setMarkedOptions({
@@ -86,6 +88,10 @@ export class ResumeTextComponent {
             headerPrefix: this.headersService.headerPrefix,
         });
     } // end constructor()
+
+    private replaceTableWithGraph(header: string, body: string): string {
+        return `<table>${header}${body}</table>`;
+    } // end replaceTableWithGraph()
 
     private replaceDescriptionWithIcon(content: string, flags: FlagsType): string {
         let newContent = content;
