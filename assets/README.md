@@ -70,14 +70,22 @@ Experience
 
 September 2020 - Present
 
+* Remotely debugging and diagnosing issues with Nagios products, including LAMP
+  stack, and ELK stack (Elasticsearch, Logstash, Kibana) applications
+* Management of client relations using written and verbal communication
+* Coordination with 35-member team over SalesForce
+
 **Software Engineer, G2Planet, Inc.**
 
 October 2013 - August 2020 *(7 years)*
 
-* Lead developer on EventMAX 2.0 platform
-* Lead developer on EventCENTRAL platform
-* Implemented internal single sign-on (SSO) system using SAML 2.0
-* Experience with Angular 8, Kubernetes, GitLab CI, Laravel 5.3, PHP, Docker, Google Cloud Platform, Amazon SES
+* Lead developer on EventMAX and EventCENTRAL platforms using PHP 7, Laravel,
+  PostgreSQL, SAML 2.0, Angular 8, Bootstrap, Docker, and Kubernetes
+* Implemented internal single sign-on (SSO) system using SAML 2.0, PHP 7,
+  Laravel, PostgreSQL, Angular 8, Bootstrap, Font Awesome, and REST API's
+* Coordination with 17 member team
+* Experience with Angular 8, Kubernetes, GitLab CI, Laravel 5.3, PHP, Docker,
+  Google Cloud Platform, Amazon SES
 
 **Database Development and Management Specialist at Custom Exteriors of
 Wisconsin, Inc.**
