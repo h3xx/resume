@@ -90,10 +90,10 @@ export class ResumeTextComponent {
     } // end constructor()
 
     private replaceTableWithGraph(header: string, body: string): string {
-        return `<table>${header}${body}</table>`;
+        return '<div id="skills-graph"></div>';
     } // end replaceTableWithGraph()
 
-    private replaceDescriptionWithIcon(content: string, flags: FlagsType): string {
+    private _replaceDescriptionWithIcon(content: string, flags: FlagsType): string {
         let newContent = content;
 
         this.descriptiveMap.forEach(
@@ -105,18 +105,18 @@ export class ResumeTextComponent {
             }
         );
 
-        return this.oldTableCellCopy(newContent, flags);
-    } // end replaceDescriptionWithIcon()
+        return this._oldTableCellCopy(newContent, flags);
+    } // end _replaceDescriptionWithIcon()
 
-    private oldTableCellCopy(content: string, flags: FlagsType): string {
+    private _oldTableCellCopy(content: string, flags: FlagsType): string {
         const type = flags.header ? 'th' : 'td';
         const tag = flags.align
             ? `<${type} align="${flags.align}">`
             : `<${type}>`;
         return `${tag}${content}</${type}>\n`;
-    } // end oldTableCellCopy()
+    } // end _oldTableCellCopy()
 
-    private check(ctGreen: number, ctYellow?: number): string {
+    private _check(ctGreen: number, ctYellow?: number): string {
         const whole = '<i class="fa fa-check-circle mr-1"></i>';
         const plus = '<i class="fa fa-plus mr-1"></i>';
         const makeIt = (ct: number, cls: string): string => {

@@ -19,6 +19,7 @@ import { ResumeComponent } from './resume/resume.component';
 // Services
 
 import { HeadersService } from './headers.service';
+import { SkillsGraphComponent } from './skills-graph/skills-graph.component';
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import { HeadersService } from './headers.service';
         ResumeComponent,
         ResumeNavComponent,
         ResumeTextComponent,
+        SkillsGraphComponent,
     ],
     exports: [
         ResumeComponent,
