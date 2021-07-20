@@ -6,6 +6,10 @@ $qrcode-width: 115px;
 $qrcode-width-md: $qrcode-width * 0.75;
 $qrcode-width-sm: $qrcode-width * 0.5;
 
+::ng-deep {
+    @import "../../../../node_modules/c3/c3.min.css";
+}
+
 a {
     color: var(--info);
     text-decoration: none;
