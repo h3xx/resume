@@ -4,10 +4,17 @@ import {
     Input,
     OnChanges,
     OnInit,
+    OnDestroy,
     ViewChild,
     ViewEncapsulation,
     AfterViewInit,
 } from '@angular/core';
+import {
+    Subscription,
+    timer,
+} from 'rxjs';
+
+import { SkillsGraphDataService } from '../skills-graph-data.service';
 
 import * as c3 from 'c3';
 
@@ -18,28 +25,53 @@ import * as c3 from 'c3';
         './skills-graph.component.scss',
     ],
 })
-export class SkillsGraphComponent implements AfterViewInit {
+export class SkillsGraphComponent implements AfterViewInit, OnDestroy {
 
-    private _chartSelector?: string;
-    @Input() private set chartSelector(val: string) {
-        this._chartSelector = val;
-        this.createChart();
-    } // end set chartSelector()
+    /*
+    private readonly _subscriptions: Subscription[] = [];
 
-    private _data?: c3.Data;
-    @Input() private set data(val: c3.Data) {
-        this._data = val;
-        this.createChart();
-    } // end set data()
+    @Input() private readonly chartSelector?: string;
 
-    constructor() {
+    private data?: c3.Data;
+
+    constructor(
+        private readonly skillsGraphDataService: SkillsGraphDataService,
+    ) {
+        this._subscriptions.push(
+            this.skillsGraphDataService.skillsData
+                .subscribe((data?: c3.Data): void => {
+                    this.data = data;
+                }),
+            this.skillsGraphDataService.triggerRender
+                .subscribe((): void => {
+                    this.createChart();
+                }),
+        );
+
+            // FIXME - debugging
+            this.skillsGraphDataService.skillsData.next({
+                        columns: [
+                            ['data1', 30, 200, 100, 400, 150, 250],
+                            ['data2', 50, 20, 10, 40, 15, 25],
+                        ]
+                    });
     } // end constructor()
 
     private createChart(): void {
-        if (this._chartSelector && this._data) {
+        console.log(this.chartSelector);
+        if (this.chartSelector && this.data) {
+           // this.skillsGraphDataService.renderGraph(
+           //     {
+           //         columns: [
+           //             ['data1', 30, 200, 100, 400, 150, 250],
+           //             ['data2', 50, 20, 10, 40, 15, 25],
+           //         ]
+           //     }
+           //     );
+           //
             const chart = c3.generate({
-                bindto: this._chartSelector,
-                data: this._data,
+                bindto: this.chartSelector,
+                data: this.data,
                 // {
                 //     columns: [
                 //         ['data1', 30, 200, 100, 400, 150, 250],
@@ -47,10 +79,21 @@ export class SkillsGraphComponent implements AfterViewInit {
                 //     ]
                 // }
             });
+            debugger;
         }
     } // end createChart()
 
     public ngAfterViewInit(): void {
+        // this.createChart();
     } // end ngAfterViewInit()
 
+    public ngOnDestroy(): void {
+        this._subscriptions.forEach(
+            (s: Subscription) => {
+                s.unsubscribe();
+            }
+        );
+    } // end ngOnDestroy()
+
+   */
 }

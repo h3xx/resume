@@ -1,11 +1,18 @@
 import {
     Component,
     ViewEncapsulation,
+    OnDestroy,
 } from '@angular/core';
 import { NgxMdService } from 'ngx-md';
+import {
+    BehaviorSubject,
+    Subscription,
+} from 'rxjs';
 
 import { Header } from '../header.interface';
 import { HeadersService } from '../headers.service';
+import { SkillsGraphDataService } from '../skills-graph-data.service';
+import { Skill } from '../skill.interface';
 
 type levelType = 1|2|3|4|5|6;
 type alignType = 'left' | 'right' | 'center' | null;
@@ -26,7 +33,12 @@ interface Slugger {
     ],
     templateUrl: './resume-text.component.html',
 })
-export class ResumeTextComponent {
+export class ResumeTextComponent implements OnDestroy {
+
+    private readonly _subscriptions: Subscription[] = [];
+
+    public readonly skillsGraphID = 'skills-chart';
+    private readonly skillData: Skill[] = [];
 
     private readonly observedHeaders: Header[] = [];
 
@@ -68,6 +80,7 @@ export class ResumeTextComponent {
     constructor(
         private readonly headersService: HeadersService,
         private readonly mdService: NgxMdService,
+        private readonly skillsGraphDataService: SkillsGraphDataService,
     ) {
         // this.mdService.renderer.heading = (text, level: number, raw, slugger) => {
         this.mdService.renderer.heading = (text: string, level: levelType, raw: string, slugger: Slugger): string => {
@@ -79,8 +92,64 @@ export class ResumeTextComponent {
             return this.oldHeadingCopy(text, level, id);
         };
 
+        // Collect data for skills graph
+        const tableCellObserver = new BehaviorSubject<[string, FlagsType] | undefined>(undefined);
+        let headerCount = 0;
+        let cellColumn = 0;
+        let row = 0;
+        let inTableBody = false;
+        let stopProcessing = false;
+        let skillName: string;
+        this._subscriptions.push(
+            tableCellObserver.subscribe(
+                (val: [string, FlagsType] | undefined): void => {
+                    if (stopProcessing || typeof val === 'undefined') {
+                        return;
+                    }
+                    const [contents, flags] = val;
+                    if (inTableBody && flags.header) {
+                        // Another table starting - we don't want that
+                        stopProcessing = true;
+                        return;
+                    }
+                    if (flags.header) {
+                        ++headerCount;
+                    } else {
+                        inTableBody = true;
+                        if (headerCount != 2) {
+                            console.error(`Table format didn't fall within our expectations`);
+                            stopProcessing = true;
+                            return;
+                        }
+                        switch (cellColumn) {
+                            case 0:
+                                skillName = contents;
+                                break;
+                            case 1:
+                                if (skillName) {
+                                    this.skillData.push({
+                                        name: skillName,
+                                        desc: contents,
+                                    });
+                                    skillName = undefined;
+                                }
+                                break;
+                        }
+                        cellColumn = (cellColumn + 1) % headerCount;
+                        if (cellColumn === 0) {
+                            ++row;
+                        }
+                    }
+                },
+            ),
+        );
+
+        this.mdService.renderer.tablecell = (content: string, flags: FlagsType): string => {
+            tableCellObserver.next([ content, flags ]);
+            return this._oldTableCellCopy(content, flags);
+        };
         this.mdService.renderer.table = (header: string, body: string): string => {
-            return this.replaceTableWithGraph(header, body);
+            return this.replaceTableWithSkillsGraph(header, body);
         };
 
         this.mdService.setMarkedOptions({
@@ -89,9 +158,15 @@ export class ResumeTextComponent {
         });
     } // end constructor()
 
-    private replaceTableWithGraph(header: string, body: string): string {
-        return '<div id="skills-graph"></div>';
-    } // end replaceTableWithGraph()
+    private collectSkillsGraphData(content: string, flags: FlagsType): void {
+        if (!flags.header) {
+        }
+        console.log(content);
+    } // end collectSkillsGraphData()
+
+    private replaceTableWithSkillsGraph(header: string, body: string): string {
+        return `<div id="${this.skillsGraphID}"></div>`;
+    } // end replaceTableWithSkillsGraph()
 
     private _replaceDescriptionWithIcon(content: string, flags: FlagsType): string {
         let newContent = content;
@@ -162,15 +237,19 @@ export class ResumeTextComponent {
         // Solution: send the BS a COPY
         if (this.observedHeaders) {
             this.headersService.headers.next([...this.observedHeaders]);
-            this.skillsGraphDataService.renderGraph(`#${this.chartID}`,
-                {
-                    columns: [
-                        ['data1', 30, 200, 100, 400, 150, 250],
-                        ['data2', 50, 20, 10, 40, 15, 25],
-                    ],
-                },
+            this.skillsGraphDataService.renderGraph(
+                `#${this.skillsGraphID}`,
+                this.skillData,
             );
         }
     } // end onMarkdownLoad()
+
+    public ngOnDestroy(): void {
+        this._subscriptions.forEach(
+            (s: Subscription) => {
+                s.unsubscribe();
+            }
+        );
+    } // end ngOnDestroy()
 
 }
