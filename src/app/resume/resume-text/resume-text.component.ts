@@ -108,6 +108,10 @@ export class ResumeTextComponent {
         return this._oldTableCellCopy(newContent, flags);
     } // end _replaceDescriptionWithIcon()
 
+    /**
+     * This method was copied from the ngx-md code to preserve original table
+     * rendering functionality.
+     */
     private _oldTableCellCopy(content: string, flags: FlagsType): string {
         const type = flags.header ? 'th' : 'td';
         const tag = flags.align
