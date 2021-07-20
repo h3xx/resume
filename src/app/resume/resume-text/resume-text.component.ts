@@ -146,7 +146,7 @@ export class ResumeTextComponent {
                 )
                 : ''
             }`;
-    } // end check()
+    } // end _check()
 
     private oldHeadingCopy(text: string, level: levelType, id: string): string {
         return `<h${level} id="${id}">${text}</h${level}>\n`;
