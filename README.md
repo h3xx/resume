@@ -25,8 +25,8 @@ Skills & Expertise
 
 | Skill                           | Experience
 | ------------------------------- | ----------------------------------
-| PHP                             | (Advanced, 11 years experience)
-| Laravel                         | (Advanced, 3 year experience)
+| PHP                             | (Expert, 11 years experience)
+| Laravel                         | (Advanced, 3 years experience)
 | Angular 10                      | (Intermediate, 2 years experience)
 | JavaScript                      | (Advanced, 7 years experience)
 | TypeScript                      | (Advanced, 2 years experience)
