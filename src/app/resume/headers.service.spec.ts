@@ -1,5 +1,4 @@
 import {
-    async,
     TestBed,
 } from '@angular/core/testing';
 import { AppModule } from '@app/app.module';
