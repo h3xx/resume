@@ -41,7 +41,7 @@ on:
     branches: [ temp-workflow ]
 
 jobs:
-	build:
+  build:
     runs-on: ubuntu-latest
 
     strategy:
@@ -67,7 +67,7 @@ jobs:
       - name: pnpm install and pnpm run build
         run: |
           pnpm install --prefer-frozen-lockfile
-					pnpx ng build --prod
+          pnpx ng build --prod
 
       - name: Push Build to Releases
         uses: ncipollo/release-action@v1
