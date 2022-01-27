@@ -51,7 +51,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.0.1
+
+      - name: Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+			- uses: pnpm/action-setup@v2.0.1
+				with:
+					version: 6.28.0
+					run_install: |
+						- recursive: true
+							args: [--frozen-lockfile, --strict-peer-dependencies]
+						- args: [--global, gulp, prettier, typescript]
+
       - name: Cache node modules
         uses: actions/cache@v1
         with:
@@ -60,12 +73,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: pnpm install and pnpm run build
+      - name: pnpm run build
         run: |
           pnpm install --prefer-frozen-lockfile
           pnpx ng build --prod
