@@ -58,6 +58,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Cache pnpm modules
+        #id: cache-nodemodules
         uses: actions/cache@v2
         env:
           cache-name: pnpm
@@ -70,9 +71,6 @@ jobs:
             ${{ runner.os }}-${{ env.cache-name }}-
 
       - name: Setup PNPM
-        #if:
-          #steps.cache-nodemodules.outputs.cache-hit != 'true'
-          # .. if cache hits the skip this step.
         uses: pnpm/action-setup@v2.0.1
         with:
           version: 6.28.0
@@ -81,7 +79,7 @@ jobs:
               args: [--frozen-lockfile, --strict-peer-dependencies]
             - args: [--global, gulp, prettier, typescript]
 
-      - name: pnpm run build
+      - name: Run ng build
         run: |
           pnpx ng build --prod
 
