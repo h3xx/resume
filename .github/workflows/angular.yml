@@ -75,7 +75,6 @@ jobs:
 
       - name: pnpm run build
         run: |
-          pnpm install --prefer-frozen-lockfile
           pnpx ng build --prod
 
       - name: Push Build to Releases
