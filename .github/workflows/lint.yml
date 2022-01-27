@@ -13,3 +13,8 @@ jobs:
         id: lint-tab
         run: |
           ! egrep --include='*.ts' --include='*.scss' --include='*.html' -rl $'\t' src/
+
+      - name: Lint something else
+        id: lint-tab
+        run: |
+          true
