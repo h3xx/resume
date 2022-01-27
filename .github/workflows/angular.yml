@@ -57,13 +57,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-			- uses: pnpm/action-setup@v2.0.1
-				with:
-					version: 6.28.0
-					run_install: |
-						- recursive: true
-							args: [--frozen-lockfile, --strict-peer-dependencies]
-						- args: [--global, gulp, prettier, typescript]
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.28.0
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
+            - args: [--global, gulp, prettier, typescript]
 
       - name: Cache node modules
         uses: actions/cache@v1
