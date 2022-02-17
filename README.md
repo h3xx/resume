@@ -46,6 +46,7 @@ Skills & Expertise
 | Linux                           | (Expert, 10 years experience)
 | PostgreSQL                      | (Intermediate, 7 years experience)
 | Docker                          | (Beginner, 1 year experience)
+| Ansible                         | (Intermediate, 1 years experience)
 | Perl                            | (Advanced, 6 years experience)
 | SAML 2.0                        | (Expert, 4 years experience)
 | XML                             |
