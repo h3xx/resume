@@ -60,8 +60,6 @@ Skills & Expertise
 | System Administration           |
 | Linux Server                    |
 | Linux System Administration     |
-| C#                              | (Beginner, 1 year experience)
-| Java                            | (Beginner, 1 year experience)
 | C
 
 Experience
