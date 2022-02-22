@@ -10,9 +10,13 @@ h3xx@github ([https://github.com/h3xx](https://github.com/h3xx))
 Summary
 -------
 
-Accomplished software developer with 10+ years of experience in the field
-including designing and implementing corporate databases, software testing and
-patching, web security assessments and system administration.
+I'm a software engineer with years of experience coordinating with small to medium-sized teams. I've been on teams doing:
+- Backend and frontend implementation, including database design and planning
+- Incident response and disaster recovery
+- Revamping infrastructure and cloud migration
+- Technical writing and training engineers
+- Project planning and estimation
+- Application security review and testing
 
 Specialities
 ------------
@@ -82,7 +86,7 @@ October 2013 - August 2020 *(7 years)*
   PostgreSQL, SAML 2.0, Angular 8, Bootstrap, Docker, and Kubernetes
 * Implemented internal single sign-on (SSO) system using SAML 2.0, PHP 7,
   Laravel, PostgreSQL, Angular 8, Bootstrap, Font Awesome, and REST API's
-* Coordination with 17 member team
+* Coordination with 17 member team, including training
 * Experience with Angular 8, Kubernetes, GitLab CI, Laravel 5.3, PHP, Docker,
   Google Cloud Platform, Amazon SES
 
