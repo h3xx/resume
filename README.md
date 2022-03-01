@@ -69,7 +69,7 @@ Skills & Expertise
 Experience
 ----------
 
-**Support Technician, Nagios, Inc.**
+**Technical Support Engineer, Nagios, Inc.**
 
 September 2020 - Present
 
