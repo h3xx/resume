@@ -14,6 +14,12 @@ use constant QR_PIXEL_DIM => 6;
 use constant PADDING => 8;
 use constant T_PADDING => 3;
 use constant URL => 'https://h3xx.github.io/resume';
+use constant FOREGROUND_STYLE => {
+    fill => 'rgb(0,0,0)',
+};
+use constant BACKGROUND_STYLE => {
+    'background-color' => 'rgb(255,255,255)',
+};
 
 sub qrcode_svg {
     my %opts = (
@@ -39,13 +45,12 @@ sub qrcode_svg {
     my $svg = SVG->new(
         width => $w,
         height => $h,
+        style => BACKGROUND_STYLE,
     );
 
     my $layer = $svg->group(
         id => 'layer',
-        style => {
-            fill => 'rgb(0,0,0)',
-        },
+        style => FOREGROUND_STYLE,
     );
 
     my $qrc_g = $layer->group(
