@@ -1,4 +1,0 @@
-# treat lockfiles as binary
-package-lock.json binary
-pnpm-lock.yaml binary
-yarn.lock binary

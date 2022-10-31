@@ -1,6 +1,9 @@
 Dan Church
 ==========
 
+This project has moved to Codeberg:
+https://codeberg.org/h3xx/resume
+
 Computer Software Professional
 
 wadfujd4a@mozmail.com
